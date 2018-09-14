@@ -1,1 +1,2 @@
-sudo cron && tail -f /var/log/cron.log
+#!/bin/sh
+cron && tail -f /var/log/cron.log
