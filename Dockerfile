@@ -1,5 +1,8 @@
 FROM oott123/novnc:latest
 
+RUN echo 'user ALL=NOPASSWD: /usr/sbin/cron' >>/etc/sudoers
+RUN echo 'user  ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
 RUN apt-get update && apt-get install -y \
         firefox dbus-x11 cron\
         wget libgtk-3-0\
@@ -15,8 +18,6 @@ EXPOSE 9000
 EXPOSE 6700
 COPY crontab /etc/cron.d/my-cron
 RUN chmod 0644 /etc/cron.d/my-cron
-RUN touch /var/log/cron.log
-RUN echo 'user ALL=NOPASSWD: /usr/sbin/cron' >>/etc/sudoers
 RUN touch /var/log/cron.log
 COPY vncmain.sh /app/vncmain.sh
 
