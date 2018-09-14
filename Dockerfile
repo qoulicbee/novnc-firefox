@@ -2,7 +2,7 @@ FROM oott123/novnc:latest
 
 RUN apt-get update && apt-get install -y \
         firefox dbus-x11\
-        apt-get install wget libgtk-3-0\
+        wget libgtk-3-0\
         libgtk-3-common libcurl3 libnspr4 libnss3\
         libpango1.0 libcanberra-gtk3-module packagekit-gtk3-module\
         libgl1-mesa-dri libvdpau-va-gl1 va-driver-all fonts-dejavu pulseaudio\
