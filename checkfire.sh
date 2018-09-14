@@ -15,6 +15,7 @@ killDefunct() {
 
 ts=`date +%T`
 echo "$ts: begin checking..."
+killDefunct
 check_process "firefox"
 [ $? -eq 0 ] && echo "$ts: not running, restarting..." && `firefox &`
 sleep 5
