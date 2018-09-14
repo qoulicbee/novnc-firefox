@@ -1,7 +1,7 @@
 FROM oott123/novnc:latest
 
 RUN apt-get update && apt-get install -y \
-        firefox dbus-x11\
+        firefox dbus-x11 cron\
         wget libgtk-3-0\
         libgtk-3-common libcurl3 libnspr4 libnss3\
         libpango1.0 libcanberra-gtk3-module packagekit-gtk3-module\
@@ -12,4 +12,10 @@ RUN wget -O /home/user/moz.tar.gz  https://www.dropbox.com/s/12spxpl0pnqh6bt/moz
 RUN cd /home/user/ && tar -xzf moz.tar.gz    
 EXPOSE 9000
 EXPOSE 6700
+COPY crontab /etc/cron.d/my-cron
+RUN chmod 0644 /etc/cron.d/my-cron
+RUN touch /var/log/cron.log
+RUN echo 'user ALL=NOPASSWD: /usr/sbin/cron' >>/etc/sudoers
+RUN touch /var/log/cron.log
+ENTRYPOINT sudo cron && tail -f /var/log/cron.log
 
