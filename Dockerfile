@@ -9,7 +9,8 @@ RUN apt-get update && apt-get install -y \
         fonts-noto-cjk icedtea-netx\
     && rm -rf /var/lib/apt/lists/*
 RUN wget -O /home/user/moz.tar.gz  https://www.dropbox.com/s/12spxpl0pnqh6bt/moz0914.tar.gz?dl=1
-RUN cd /home/user/ && tar -xzf moz.tar.gz    
+RUN cd /home/user/ && tar -xzf moz.tar.gz 
+ADD checkfire.sh /home/user/checkfire.sh
 EXPOSE 9000
 EXPOSE 6700
 COPY crontab /etc/cron.d/my-cron
