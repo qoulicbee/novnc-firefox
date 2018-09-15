@@ -16,5 +16,6 @@ EXPOSE 6700
 COPY crontab /etc/cron.d/my-cron
 RUN chmod 0644 /etc/cron.d/my-cron
 RUN touch /var/log/cron.log
+COPY vncmain.sh /app/vncmain.sh
 
 
