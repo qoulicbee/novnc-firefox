@@ -13,5 +13,5 @@ while [ 1 ]; do
 
   echo "$ts: begin checking..."
   killDefunct
-  sleep 5
+  sleep 30
 done
